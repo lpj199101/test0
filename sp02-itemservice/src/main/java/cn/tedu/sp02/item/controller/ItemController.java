@@ -25,6 +25,12 @@ public class ItemController {
 	@Value("${server.port}")
 	private int port;
 	
+	/*http协议
+	 * 协议头: asdsadsf 
+	 * 协议体：parm1=1&param2=2&param3=3   名值对
+	 * 
+	 * 接收： void f(Strig parm1,int parm2,String parm3)
+	 */	
 	@GetMapping("/{orderId}") //@RequestMapping(path="/{orderId}", method=GET)
 	public JsonResult<List<Item>> getItems(@PathVariable String orderId) throws Exception {
 		log.info("port="+port+", orderId="+orderId);
@@ -41,7 +47,12 @@ public class ItemController {
 		return r;
 	}
 	
-	
+	/*http协议
+	 * 协议头: asdsadsf 
+	 * 协议体：[{"id":1,"name":LPJ},{},{}]
+	 * 
+	 * 接收：    @RequestBody 
+	 */	
 	@PostMapping("/decreaseNumber") //相当于@RequestMapping(path="/{decreaseNumber}", method=POST)     
 	public JsonResult decreaseNumber(@RequestBody List<Item> items) {
 		log.info("执行减少商品库存");
